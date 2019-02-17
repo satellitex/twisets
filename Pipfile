@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+lark = "*"
+
+[dev-packages]
+"flake8" = "*"
+"autopep8" = "*"
+pytest = "*"
+ipdb = "*"
+
+[requires]
+python_version = "3.6"
+
+[scripts]
+lint = "flake8 twisets tests main.py"
+fmt = "autopep8 -ivr twisets tests main.py"
+test = "pytest tests"
