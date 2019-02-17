@@ -1,0 +1,5 @@
+a = (>@twitter&<@twitter)
+b = (>@twitter&<@twitter)
+
+a
+b

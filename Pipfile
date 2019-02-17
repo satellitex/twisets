@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-lark = "*"
+lark-parser = "*"
 
 [dev-packages]
 "flake8" = "*"
@@ -19,3 +19,4 @@ python_version = "3.6"
 lint = "flake8 twisets tests main.py"
 fmt = "autopep8 -ivr twisets tests main.py"
 test = "pytest tests"
+example = "python example/example.py"

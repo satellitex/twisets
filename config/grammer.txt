@@ -1,0 +1,33 @@
+?program: [(state)+]
+
+// statement
+?state: expr _NL*
+    | assignment _NL*
+assignment: new_symbol "=" expr
+new_symbol: NAME
+
+// expr
+?expr: term
+    | sum
+    | intersection
+    | not
+sum: expr "&" term
+intersection: expr "|" term
+not: "~" expr
+
+//term
+?term: id
+    | symbol
+    | priority
+?priority: "(" expr ")"
+id: INOUT "@" ID
+symbol: NAME
+INOUT: /(>|<)/
+ID: /[a-zA-Z0-9_]+/
+
+_NL: /(\r?\n)+\s*/
+
+%import common.CNAME -> NAME
+
+%import common.WS_INLINE
+%ignore WS_INLINE
