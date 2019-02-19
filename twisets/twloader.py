@@ -15,3 +15,6 @@ class TwiLoader(object):
         if not sid in self._db:
             self._db[sid] = self._twitter.get(io, id)
         return self._db[sid]
+
+    def screen_names(self, ids):
+        return self._twitter.screen_names(ids)

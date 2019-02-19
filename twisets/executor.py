@@ -8,19 +8,20 @@ class Visitor(object):
 
     def program(self, tree, env, interactive=False):
         if interactive:
-            ret = self.visit(tree, env)
-            if ret is not None:
-                print(ret)
+            self.visit(tree, env)
         else:
             for sub_tree in tree.children:
-                ret = self.visit(sub_tree, env)
-                if ret is not None:
-                    print(ret)
+                self.visit(sub_tree, env)
+
+    def show(self, tree, env):
+        value = self.visit(tree.children[0], env)
+        print(env.twiloader.screen_names(value))
 
     def assignment(self, tree, env):
         left = self.visit(tree.children[0], env)
         right = self.visit(tree.children[1], env)
         env.set(left, right)
+        return right
 
     def new_symbol(self, tree, env):
         return tree.children[0].value

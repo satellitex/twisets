@@ -25,7 +25,7 @@ if __name__ == '__main__':
     # 初期環境を定義
     conf = YamlConfig(config_path)
     client = TwitterAPIClient(conf)
-    db = OnMemoryDB
+    db = OnMemoryDB()
     twiloader = TwiLoader(twitter=client, db=db)
     env = Environment(twiloader=twiloader)
 

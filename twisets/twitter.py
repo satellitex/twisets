@@ -16,6 +16,14 @@ class TwitterClient(object, metaclass=ABCMeta):
         """
         pass
 
+    @abstractmethod
+    def screen_names(self, ids):
+        """
+
+        :param ids: set["id1","id2"]
+        :return: set["screen_name1", "screen_name2"]
+        """
+
 
 class MockTwitterClient(TwitterClient):
     def __init__(self):
@@ -23,6 +31,9 @@ class MockTwitterClient(TwitterClient):
 
     def get(self, io, id):
         return {id}
+
+    def screen_names(self, ids):
+        return set(["s_"+id for id in ids])
 
 
 class TwitterAPIClient(TwitterClient):
@@ -53,3 +64,9 @@ class TwitterAPIClient(TwitterClient):
         else:
             raise NotImplementedError("io code is ",io)
         return set(ret_ids)
+
+    def screen_names(self, ids):
+        if len(ids) > 100:
+            print("Too many lenght : %d, so previous 100 screen_name." % len(ids))
+            ids = set([id for id in ids][:100])
+        return set([user.screen_name for user in self.api.lookup_users(user_ids=ids)])
