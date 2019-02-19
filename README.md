@@ -1,40 +1,48 @@
 # twisets
 Algebra of sets @twitter follow/followers
 
+
+## Eaxmpel
+```buildoutcfg
+>> a = (@twitter_id1 | >@twitter_id2) & (<@twitter_id1 || <@twitter_id2)
+>> a
+```
+
 ## BNF
 ```
 ?program: [(state)+]
 
 // statement
-?state: expr
-    | assignment
+?state: expr _NL*
+    | assignment _NL*
 assignment: new_symbol "=" expr
-new_symbol: WORD
+new_symbol: NAME
 
 // expr
 ?expr: term
     | sum
     | intersection
-    | not
-sum: expr "&" term
-intersection: exor "|" term
-not: "~" expr
-    
+    | difference
+    | symmetric_difference
+sum: expr "|" term
+intersection: expr "&" term
+difference: expr "-" term
+symmetric_difference: expr "^" term
+
 //term
 ?term: id
     | symbol
     | priority
 ?priority: "(" expr ")"
-id: /(i|o)@[a-zA-Z_0-9]+/
-symbol: WORD
+id: INOUT "@" ID
+symbol: NAME
+INOUT: /(>|<)/
+ID: /[a-zA-Z0-9_]+/
 
-%import common.WORD
-%import common.WS
-%ignore WS
-```
+_NL: /(\r?\n)+\s*/
 
-## Eaxmpel
-```buildoutcfg
-a = !(i@twitter_id1 || i@twitter_id2) && (o@twitter_id1 || o@twitter_id2)
-a
+%import common.CNAME -> NAME
+
+%import common.WS_INLINE
+%ignore WS_INLINE
 ```
