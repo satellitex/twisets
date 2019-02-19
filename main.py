@@ -19,7 +19,7 @@ env = Environment(twiloader=twiloader)
 
 try:
     while True:
-        program = input(">>")
+        program = input(">> ")
         try:
             # プログラムを字句解析＆構文解析
             tree = parser.parse(program)
