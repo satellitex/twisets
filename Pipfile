@@ -7,6 +7,9 @@ name = "pypi"
 lark-parser = "*"
 requests = "*"
 requests-oauthlib = "*"
+tweepy = "*"
+pip = "*"
+pyyaml = "*"
 
 [dev-packages]
 "flake8" = "*"
