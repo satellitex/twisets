@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 lark-parser = "*"
+requests = "*"
+requests-oauthlib = "*"
 
 [dev-packages]
 "flake8" = "*"

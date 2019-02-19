@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from lark import Lark
 
 program = open('example/program.txt').read()
@@ -9,4 +10,3 @@ parser = Lark(rule, start='program', parser='lalr')
 # プログラムを字句解析＆構文解析
 tree = parser.parse(program)
 print(tree.pretty())
-

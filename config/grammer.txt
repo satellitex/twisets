@@ -10,10 +10,12 @@ new_symbol: NAME
 ?expr: term
     | sum
     | intersection
-    | not
+    | difference
+    | symmetric_difference
 sum: expr "&" term
 intersection: expr "|" term
-not: "~" expr
+difference: expr "-" term
+symmetric_difference: expr "^" term
 
 //term
 ?term: id
