@@ -1,5 +1,7 @@
-a = (>@twitter&<@twitter)
-b = (>@twitter&<@twitter)
+a = (>@twitter&<@xxx)
+b = (>@twitter|<@xxx)
 
 a
 b
+a&b
+a|b

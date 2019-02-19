@@ -3,18 +3,15 @@
 from abc import ABCMeta, abstractmethod
 
 
-class TwiLoader(object, metaclass=ABCMeta):
+class TwiLoader(object):
     def __init__(self, *, twitter=None, db=None):
         if db == None:
             self._db = db
         self._db = dict()
+        self._twitter = twitter
 
-    @abstractmethod
     def load(self, io, id):
-        """
-
-        :param io: ">" or "<", "<": follow, ">": follower.
-        :param id: twitter_id
-        :return: set of twitter_id's follow or follower.
-        """
-        pass
+        sid = io + id
+        if not sid in self._db:
+            self._db[sid] = self._twitter.get(io, id)
+        return self._db[sid]
