@@ -6,11 +6,16 @@ class Visitor(object):
     def __default__(self, tree, env):
         raise NotImplementedError(tree.data)
 
-    def program(self, tree, env):
-        for sub_tree in tree.children:
-            ret = self.visit(sub_tree, env)
+    def program(self, tree, env, interactive=False):
+        if interactive:
+            ret = self.visit(tree, env)
             if ret is not None:
                 print(ret)
+        else:
+            for sub_tree in tree.children:
+                ret = self.visit(sub_tree, env)
+                if ret is not None:
+                    print(ret)
 
     def assignment(self, tree, env):
         left = self.visit(tree.children[0], env)

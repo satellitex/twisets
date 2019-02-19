@@ -12,8 +12,8 @@ new_symbol: NAME
     | intersection
     | difference
     | symmetric_difference
-sum: expr "&" term
-intersection: expr "|" term
+sum: expr "|" term
+intersection: expr "&" term
 difference: expr "-" term
 symmetric_difference: expr "^" term
 
