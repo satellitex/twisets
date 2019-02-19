@@ -4,8 +4,7 @@ from twisets.executor import Visitor
 from twisets.twitter import MockTwitterClient
 from twisets.twloader import TwiLoader
 from twisets.environment import Environment
-
-
+from twisets.db import OnMemoryDB
 
 rule = open('config/grammer.txt').read()
 # 文法規則をパーサジェネレータに渡してパーサを生成(字句解析もやってくれる)
@@ -14,7 +13,8 @@ parser = Lark(rule, start='program', parser='lalr')
 visitor = Visitor()
 # 初期環境を定義
 client = MockTwitterClient()
-twiloader = TwiLoader(twitter=client)
+db = OnMemoryDB
+twiloader = TwiLoader(twitter=client, db=db)
 env = Environment(twiloader=twiloader)
 
 try:
@@ -29,7 +29,3 @@ try:
 
 except EOFError:
     pass
-
-
-
-
