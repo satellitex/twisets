@@ -53,12 +53,10 @@ class SQLiteDB(DB):
             print(e)
 
     def __getitem__(self, item):
-        print('get item', item)
         c = self._conn.cursor()
         c.execute('select has_id from twisets where id=="%s"' % item)
         data = c.fetchall()
         self._conn.commit()
-        print(data)
         return set([d[0] for d in data])
 
     def __setitem__(self, key, value):
