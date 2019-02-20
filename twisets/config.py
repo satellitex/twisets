@@ -8,7 +8,7 @@ class Config(object, metaclass=ABCMeta):
     CONSUMER_SECRET = "consumer_secret_key"
     ACCESS_KEY = "access_key"
     ACCESS_SECRET = "access_secret_key"
-
+    DATABASE_PATH = "database_path"
 
 class YamlConfig(Config):
     def __init__(self, path):
