@@ -3,10 +3,11 @@ Algebra of sets @twitter follow/followers
 
 ## How to start
 ```
-git clone https://github.com/satellitex/twisets.git
-pipenv shell
-pipenv install
-pipenv run main
+$ git clone https://github.com/satellitex/twisets.git
+$ cd twisets
+$ pipenv shell
+$ pipenv install
+$ pipenv run main
 ```
 
 ### option
